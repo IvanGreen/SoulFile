@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Button?>
+<VBox fx:id="authorization" alignment="center" style="-fx-background-image: url(wall.jpg);" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoginController">
+    <TextField fx:id="login" maxWidth="200" promptText="Login">
+        <VBox.margin>
+            <Insets bottom="10.0" />
+        </VBox.margin></TextField>
+    <PasswordField fx:id="password" maxWidth="200" promptText="Password" />
+    <Button  onAction="#auth" prefWidth="200" text="Authorization">
+        <opaqueInsets>
+            <Insets />
+        </opaqueInsets>
+        <VBox.margin>
+            <Insets top="10.0" />
+        </VBox.margin></Button>
+</VBox>
