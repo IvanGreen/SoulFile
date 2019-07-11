@@ -10,7 +10,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/auth.fxml"));
         primaryStage.setTitle("SoulFile - File Transfer");
         primaryStage.setScene(new Scene(root, 300, 600));
         primaryStage.setResizable(false);
