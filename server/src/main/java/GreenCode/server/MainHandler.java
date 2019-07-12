@@ -1,5 +1,6 @@
 package GreenCode.server;
 
+import GreenCode.common.FileCommand;
 import GreenCode.common.FileMessage;
 import GreenCode.common.FileRequest;
 import io.netty.channel.ChannelHandlerContext;
@@ -7,6 +8,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.ReferenceCountUtil;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 public class MainHandler extends ChannelInboundHandlerAdapter {
     @Override
@@ -20,7 +22,10 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
                 }
             }
             if (msg instanceof FileMessage){
-                //ToDo: что делать если прилетел файл
+                FileMessage fm = (FileMessage) msg;
+                Files.write(Paths.get("common/src/main/resources/storage/server/" + fm.getFilename()),fm.getData(), StandardOpenOption.CREATE);
+                FileCommand fc = new FileCommand("The server has a new file: " + fm.getFilename());
+                ctx.writeAndFlush(fc);
             }
         } finally {
             ReferenceCountUtil.release(msg);

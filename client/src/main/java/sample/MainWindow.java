@@ -1,6 +1,7 @@
 package sample;
 
 import GreenCode.common.AbstractMessage;
+import GreenCode.common.FileCommand;
 import GreenCode.common.FileMessage;
 import GreenCode.common.FileRequest;
 import javafx.application.Platform;
@@ -12,20 +13,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ResourceBundle;
 
 public class MainWindow implements Initializable {
-
-    @FXML
-    Button localBtnDownload;
-
-    @FXML
-    Button soulBtnDownload;
 
     @FXML
     ListView localFiles;
@@ -51,7 +48,10 @@ public class MainWindow implements Initializable {
                         FileMessage fm = (FileMessage) am;
                         Files.write(Paths.get("common/src/main/resources/storage/clients/" + fm.getFilename()),fm.getData(), StandardOpenOption.CREATE);
                         refreshLocalFilesList();
+                    }
+                    if (am instanceof FileCommand){
                         refreshSoulFilesList();
+                        System.out.println(((FileCommand) am).getMsg());
                     }
                 }
             } catch (ClassNotFoundException | IOException e){
@@ -99,13 +99,26 @@ public class MainWindow implements Initializable {
     public void pressOnSoulDownloadBtn(ActionEvent actionEvent){
         if (takeSoulFile().length() > 0){
             Network.sendMsg(new FileRequest(takeSoulFile()));
-            System.out.println("GOT IT");
+            System.out.println("Send FileRequest: " + takeSoulFile());
         }
     }
 
+    public void pressOnLocalDownloadBtn(ActionEvent actionEvent) throws IOException {
+        if (takeLocalFile().length() > 0){
+            Network.sendMsg(new FileMessage(Paths.get("common/src/main/resources/storage/clients/" + takeLocalFile())));
+            System.out.println("Send FileMessage: " + Paths.get("common/src/main/resources/storage/clients/" + takeLocalFile()));
+        }
+    }
+
+    private String takeLocalFile(){
+        ObservableList lf = localFiles.getSelectionModel().getSelectedItems();
+        String name = lf.get(0).toString();
+        return name;
+    }
+
     private String takeSoulFile() {
-        ObservableList sl = soulFiles.getSelectionModel().getSelectedItems();
-        String name = sl.get(0).toString();
+        ObservableList sf = soulFiles.getSelectionModel().getSelectedItems();
+        String name = sf.get(0).toString();
         return name;
     }
 }
