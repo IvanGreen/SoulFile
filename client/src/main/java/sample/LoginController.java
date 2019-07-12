@@ -1,6 +1,7 @@
 package sample;
 
 import GreenCode.server.DBconnection;
+import GreenCode.server.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,6 +39,7 @@ public class LoginController {
             DBconnection.connect();
             String nickname = DBconnection.getNicknameByLoginAndPassword(login.getText(),password.getText());
             if (nickname != null){
+                User user = new User(nickname);
                 System.out.println("Successfully connection register person:  " + nickname);
                 return true;
             }

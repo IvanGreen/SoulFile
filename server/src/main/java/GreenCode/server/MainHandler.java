@@ -16,14 +16,14 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
         try{
             if (msg instanceof FileRequest){
                 FileRequest fr = (FileRequest) msg;
-                if (Files.exists(Paths.get("common/src/main/resources/storage/server/" + fr.getFilename()))){
-                    FileMessage fm = new FileMessage(Paths.get("common/src/main/resources/storage/server/" + fr.getFilename()));
+                if (Files.exists(Paths.get(User.getServerPath() + fr.getFilename()))){
+                    FileMessage fm = new FileMessage(Paths.get(User.getServerPath() + fr.getFilename()));
                     ctx.writeAndFlush(fm);
                 }
             }
             if (msg instanceof FileMessage){
                 FileMessage fm = (FileMessage) msg;
-                Files.write(Paths.get("common/src/main/resources/storage/server/" + fm.getFilename()),fm.getData(), StandardOpenOption.CREATE);
+                Files.write(Paths.get(User.getServerPath() + fm.getFilename()),fm.getData(), StandardOpenOption.CREATE);
                 FileCommand fc = new FileCommand("The server has a new file: " + fm.getFilename());
                 ctx.writeAndFlush(fc);
             }
