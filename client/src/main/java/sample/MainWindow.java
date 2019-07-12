@@ -9,15 +9,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
-
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ResourceBundle;
@@ -66,22 +62,24 @@ public class MainWindow implements Initializable {
         refreshSoulFilesList();
     }
 
-    private void refreshLocalFilesList() {
+    public void refreshLocalFilesList() {
         updateUI(() -> {
             try {
                 localFiles.getItems().clear();
                 Files.list(Paths.get("common/src/main/resources/storage/clients")).map(p -> p.getFileName().toString()).forEach(o -> localFiles.getItems().add(o));
+                System.out.println("Local Files List Update");
             } catch (IOException e){
                 e.printStackTrace();
             }
         });
     }
 
-    private void refreshSoulFilesList() {
+    public void refreshSoulFilesList() {
         updateUI(() -> {
             try {
                 soulFiles.getItems().clear();
                 Files.list(Paths.get("common/src/main/resources/storage/server")).map(p -> p.getFileName().toString()).forEach(o -> soulFiles.getItems().add(o));
+                System.out.println("Soul Files List Update");
             } catch (IOException e){
                 e.printStackTrace();
             }

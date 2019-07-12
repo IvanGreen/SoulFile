@@ -56,7 +56,7 @@
                       <TextArea editable="false" style="-fx-font-weight: bold" text="Local Files" HBox.hgrow="ALWAYS" />
                       <Button alignment="BASELINE_RIGHT" prefHeight="50.0" prefWidth="75.0" onAction="#pressOnLocalDownloadBtn" text="Upload" />
                       <Button alignment="BASELINE_RIGHT" prefHeight="50.0" prefWidth="55.0" text="Delete" />
-                      <Button alignment="BASELINE_RIGHT" prefHeight="50.0" prefWidth="55.0" text="Update" />
+                      <Button alignment="BASELINE_RIGHT" prefHeight="50.0" prefWidth="55.0" onAction="#refreshLocalFilesList" text="Update" />
                   </HBox>
                   <HBox VBox.vgrow="ALWAYS">
                       <ListView fx:id="localFiles" HBox.hgrow="ALWAYS" />
@@ -68,7 +68,7 @@
                      <TextArea editable="false" prefWidth="20.0" style="-fx-font-weight: bold" text="Soul Files" HBox.hgrow="ALWAYS" />
                      <Button alignment="BASELINE_RIGHT" prefHeight="50.0" prefWidth="75.0" onAction="#pressOnSoulDownloadBtn" text="Download" />
                      <Button alignment="BASELINE_RIGHT" prefHeight="50.0" prefWidth="55.0" text="Delete" />
-                     <Button alignment="BASELINE_RIGHT" prefHeight="50.0" prefWidth="55.0" text="Update" />
+                     <Button alignment="BASELINE_RIGHT" prefHeight="50.0" prefWidth="55.0" onAction="#refreshSoulFilesList" text="Update" />
                  </HBox>
                   <HBox VBox.vgrow="ALWAYS">
                       <ListView fx:id="soulFiles" HBox.hgrow="ALWAYS" />
