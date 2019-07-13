@@ -1,10 +1,6 @@
 package sample;
 
-import GreenCode.common.AbstractMessage;
-import GreenCode.common.FileCommand;
-import GreenCode.common.FileMessage;
-import GreenCode.common.FileRequest;
-import GreenCode.server.User;
+import GreenCode.common.*;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -33,7 +29,11 @@ public class MainWindow implements Initializable {
     @FXML
     ListView onlineUsers;
 
+    private User user;
+
     public void initialize(URL location, ResourceBundle resources) {
+        user = LoginController.getUser();
+        System.out.println(user.getNickname());
         chatLog.appendText("Welcome in SoulFile program!");
         onlineUsers.getItems().addAll("Test", "Test2", "Test3", "Test4"); //Todo: Online users list
         Network.start();
@@ -43,7 +43,7 @@ public class MainWindow implements Initializable {
                     AbstractMessage am = Network.readObject();
                     if (am instanceof FileMessage){
                         FileMessage fm = (FileMessage) am;
-                        Files.write(Paths.get(User.getClientPath() + fm.getFilename()),fm.getData(), StandardOpenOption.CREATE);
+                        Files.write(Paths.get(user.getClientPath() + fm.getFilename()),fm.getData(), StandardOpenOption.CREATE);
                         refreshLocalFilesList();
                     }
                     if (am instanceof FileCommand){
@@ -67,7 +67,7 @@ public class MainWindow implements Initializable {
         updateUI(() -> {
             try {
                 localFiles.getItems().clear();
-                Files.list(Paths.get(User.getClientPath())).map(p -> p.getFileName().toString()).forEach(o -> localFiles.getItems().add(o));
+                Files.list(Paths.get(user.getClientPath())).map(p -> p.getFileName().toString()).forEach(o -> localFiles.getItems().add(o));
                 System.out.println("Local Files List Update");
             } catch (IOException e){
                 e.printStackTrace();
@@ -79,7 +79,7 @@ public class MainWindow implements Initializable {
         updateUI(() -> {
             try {
                 soulFiles.getItems().clear();
-                Files.list(Paths.get(User.getServerPath())).map(p -> p.getFileName().toString()).forEach(o -> soulFiles.getItems().add(o));
+                Files.list(Paths.get(user.getServerPath())).map(p -> p.getFileName().toString()).forEach(o -> soulFiles.getItems().add(o));
                 System.out.println("Soul Files List Update");
             } catch (IOException e){
                 e.printStackTrace();
@@ -97,15 +97,15 @@ public class MainWindow implements Initializable {
 
     public void pressOnSoulDownloadBtn(ActionEvent actionEvent){
         if (takeSoulFile().length() > 0){
-            Network.sendMsg(new FileRequest(takeSoulFile()));
+            Network.sendMsg(new FileRequest(takeSoulFile(),user));
             System.out.println("Send FileRequest: " + takeSoulFile());
         }
     }
 
-    public void pressOnLocalDownloadBtn(ActionEvent actionEvent) throws IOException {
+    public void pressOnLocalUpdateBtn(ActionEvent actionEvent) throws IOException {
         if (takeLocalFile().length() > 0){
-            Network.sendMsg(new FileMessage(Paths.get(User.getClientPath() + takeLocalFile())));
-            System.out.println("Send FileMessage: " + Paths.get(User.getClientPath() + takeLocalFile()));
+            Network.sendMsg(new FileMessage(Paths.get(user.getClientPath() + takeLocalFile()),user));
+            System.out.println("Send FileMessage: " + Paths.get(user.getClientPath() + takeLocalFile()));
         }
     }
 

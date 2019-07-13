@@ -1,14 +1,15 @@
-package GreenCode.server;
+package GreenCode.common;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class User {
-    private static String nickname;
-    private static String clientPath;
-    private static String serverPath;
+public class User implements Serializable {
+    private String nickname;
+    private String clientPath;
+    private String serverPath;
 
     public User(String nickname) {
         this.nickname = nickname;
@@ -18,15 +19,15 @@ public class User {
         System.out.println("Add new User: " + getNickname() + "\n server folder: " + getServerPath() + "\n private folder: " + getClientPath());
     }
 
-    public static String getNickname() {
+    public String getNickname() {
         return nickname;
     }
 
-    public static String getClientPath() {
+    public String getClientPath() {
         return clientPath;
     }
 
-    public static String getServerPath() {
+    public String getServerPath() {
         return serverPath;
     }
 
