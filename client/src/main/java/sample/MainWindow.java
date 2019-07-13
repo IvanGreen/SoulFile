@@ -8,9 +8,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ResourceBundle;
@@ -119,5 +122,23 @@ public class MainWindow implements Initializable {
         ObservableList sf = soulFiles.getSelectionModel().getSelectedItems();
         String name = sf.get(0).toString();
         return name;
+    }
+
+    public void pressOnLocalDeleteBtn(ActionEvent actionEvent) throws IOException {
+        if (takeLocalFile().length() > 0){
+            Path path = Paths.get(user.getClientPath() + takeLocalFile());
+            Files.delete(path);
+            refreshLocalFilesList();
+            System.out.println("Delete Local File: " + path);
+        }
+    }
+
+    public void pressOnSoulDeleteBtn(ActionEvent actionEvent) throws IOException {
+        if (takeSoulFile().length() > 0){
+            Path path = Paths.get(user.getServerPath() + takeSoulFile());
+            Files.delete(path);
+            refreshSoulFilesList();
+            System.out.println("Delete Soul File: " + path);
+        }
     }
 }
