@@ -6,10 +6,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -21,24 +22,20 @@ import java.util.ResourceBundle;
 public class MainWindow implements Initializable {
 
     @FXML
+    TextField textFieldMessage;
+
+    @FXML
+    Button sendBtn;
+    @FXML
     ListView localFiles;
 
     @FXML
     ListView soulFiles;
 
-    @FXML
-    TextArea chatLog;
-
-    @FXML
-    ListView onlineUsers;
-
     private User user;
 
     public void initialize(URL location, ResourceBundle resources) {
         user = LoginController.getUser();
-        System.out.println(user.getNickname());
-        chatLog.appendText("Welcome in SoulFile program!");
-        onlineUsers.getItems().addAll("Test", "Test2", "Test3", "Test4"); //Todo: Online users list
         Network.start();
         Thread t = new Thread(() -> {
             try {
@@ -114,14 +111,12 @@ public class MainWindow implements Initializable {
 
     private String takeLocalFile(){
         ObservableList lf = localFiles.getSelectionModel().getSelectedItems();
-        String name = lf.get(0).toString();
-        return name;
+        return lf.get(0).toString();
     }
 
     private String takeSoulFile() {
         ObservableList sf = soulFiles.getSelectionModel().getSelectedItems();
-        String name = sf.get(0).toString();
-        return name;
+        return sf.get(0).toString();
     }
 
     public void pressOnLocalDeleteBtn(ActionEvent actionEvent) throws IOException {

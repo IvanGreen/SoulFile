@@ -1,16 +1,17 @@
 package GreenCode.server;
 
-import GreenCode.common.FileCommand;
-import GreenCode.common.FileMessage;
-import GreenCode.common.FileRequest;
+import GreenCode.common.*;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.ReferenceCountUtil;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 
 public class MainHandler extends ChannelInboundHandlerAdapter {
+
+    private static ArrayList<String> list = new ArrayList<>();
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {

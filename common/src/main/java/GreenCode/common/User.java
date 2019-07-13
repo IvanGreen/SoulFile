@@ -31,7 +31,7 @@ public class User implements Serializable {
         return serverPath;
     }
 
-    public void checkFolders(){
+    private void checkFolders(){
         if (!Files.exists(Paths.get(getClientPath()))){
             Path path = Paths.get(getClientPath());
             try {
