@@ -39,3 +39,37 @@
 2019-02-24 16:02:35.974 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Start Network
 2019-02-24 16:02:35.982 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Local Files List Update User: Relo.a.D
 2019-02-24 16:02:35.984 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send SoulFileRequest: Relo.a.D
+2019-06-24 16:06:21.042 [main] INFO  GreenCode.common.Log4j - Start DB Connection
+2019-06-24 16:06:25.568 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Start Network
+2019-06-24 16:06:29.973 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - AuthenticationRequest send for: login1
+2019-06-24 16:06:29.997 [nioEventLoopGroup-3-1] INFO  GreenCode.common.Log4j - Try login: login1
+2019-06-24 16:06:29.998 [nioEventLoopGroup-3-1] INFO  GreenCode.common.Log4j - Send AuthenticationCommand with: EVE
+2019-06-24 16:06:30.009 [Thread-5] INFO  GreenCode.common.Log4j - Add new User: EVE
+ server folder: common/src/main/resources/storage/server/EVE/
+ private folder: common/src/main/resources/storage/clients/EVE/
+2019-06-24 16:06:30.010 [Thread-5] INFO  GreenCode.common.Log4j - Successfully connection register person:  EVE
+2019-06-24 16:06:30.011 [Thread-5] INFO  GreenCode.common.Log4j - Stop Network
+2019-06-24 16:06:30.036 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Start Network
+2019-06-24 16:06:30.043 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Local Files List Update User: EVE
+2019-06-24 16:06:30.044 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send SoulFileRequest: EVE
+2019-06-24 16:06:30.232 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Soul Files List Update
+2019-06-24 16:06:34.263 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send FileMessage: common\src\main\resources\storage\clients\EVE\EVE1.txt
+2019-06-24 16:06:34.273 [Thread-6] INFO  GreenCode.common.Log4j - The server has a new file: EVE1.txt
+2019-06-24 16:06:34.274 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send SoulFileRequest: EVE
+2019-06-24 16:06:34.281 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Soul Files List Update
+2019-06-24 16:06:34.282 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Soul Files List Update
+2019-06-24 16:06:36.645 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send SoulFileRequest: EVE
+2019-06-24 16:06:36.646 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Delete Soul File: common\src\main\resources\storage\server\EVE\EVE1.txt
+2019-06-24 16:06:36.650 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Soul Files List Update
+2019-06-24 16:06:39.133 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send FileRequest: EVE2.txt
+2019-06-24 16:06:39.140 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Local Files List Update User: EVE
+2019-06-24 16:06:43.381 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Local Files List Update User: EVE
+2019-06-24 16:06:43.381 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Delete Local File: common\src\main\resources\storage\clients\EVE\EVE2.txt
+2019-06-24 16:06:50.549 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send FileMessage: common\src\main\resources\storage\clients\EVE\EVE1.txt
+2019-06-24 16:06:50.553 [Thread-6] INFO  GreenCode.common.Log4j - The server has a new file: EVE1.txt
+2019-06-24 16:06:50.554 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send SoulFileRequest: EVE
+2019-06-24 16:06:50.556 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Soul Files List Update
+2019-06-24 16:06:50.557 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Soul Files List Update
+2019-06-24 16:06:53.422 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send SoulFileRequest: EVE
+2019-06-24 16:06:53.422 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Delete Soul File: common\src\main\resources\storage\server\EVE\EVE1.txt
+2019-06-24 16:06:53.424 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Soul Files List Update
