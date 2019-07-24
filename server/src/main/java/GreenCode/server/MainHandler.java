@@ -36,6 +36,13 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
                 SoulFile sf = new SoulFile(filenames);
                 ctx.writeAndFlush(sf);
             }
+            if (msg instanceof AuthenticationRequest){
+                AuthenticationRequest ar = (AuthenticationRequest) msg;
+                String nickname = DBConnection.getNicknameByLoginAndPassword(ar.getLogin(),ar.getPassword());
+                AuthenticationCommand ac = new AuthenticationCommand(nickname);
+                System.out.println("Send AuthenticationCommand with: " + nickname);
+                ctx.writeAndFlush(ac);
+            }
         } finally {
             ReferenceCountUtil.release(msg);
         }

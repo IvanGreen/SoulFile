@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class SoulFile extends AbstractMessage {
 
-    private ArrayList<String> arrayFilename;
+    private ArrayList<String> arrayListFilenames;
 
-    public SoulFile(ArrayList<String> arrayFilename) {
-        this.arrayFilename = arrayFilename;
+    public SoulFile(ArrayList<String> arrayListFilenames) {
+        this.arrayListFilenames = arrayListFilenames;
     }
 
-    public ArrayList<String> getArrayFilename() {
-        return arrayFilename;
+    public ArrayList<String> getArrayListFilename() {
+        return arrayListFilenames;
     }
 }

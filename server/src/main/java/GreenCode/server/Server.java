@@ -16,6 +16,7 @@ public class Server {
     public void run() throws Exception{
         EventLoopGroup mainGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
+        DBConnection.connect();
         try {
             ServerBootstrap b = new ServerBootstrap();
             b.group(mainGroup, workerGroup)
@@ -33,6 +34,7 @@ public class Server {
             ChannelFuture future = b.bind(8189).sync();
             future.channel().closeFuture().sync();
             } finally {
+                DBConnection.disconnect();
                 mainGroup.shutdownGracefully();
                 workerGroup.shutdownGracefully();
             }

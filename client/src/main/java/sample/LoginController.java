@@ -1,11 +1,14 @@
 package sample;
 
-import GreenCode.server.DBConnection;
+import GreenCode.common.AbstractMessage;
+import GreenCode.common.AuthenticationCommand;
+import GreenCode.common.AuthenticationRequest;
 import GreenCode.common.User;
-import GreenCode.server.Server;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
@@ -13,9 +16,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.sql.SQLException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class LoginController {
+public class LoginController implements Initializable {
 
     @FXML
     VBox authorization;
@@ -29,33 +33,9 @@ public class LoginController {
     private static User user;
 
     public void auth(ActionEvent actionEvent){
-        if (tryAuth()){
-            getMainWindow();
-        } else {
-            getLoginExceptionWindow();
-        }
+        Network.sendMsg(new AuthenticationRequest(login.getText(),password.getText()));
+        System.out.println("AuthenticationRequest send with: " + login.getText() + " / " + password.getText());
     }
-
-    private boolean tryAuth() {
-
-        try {
-            DBConnection.connect();
-            String nickname = DBConnection.getNicknameByLoginAndPassword(login.getText(),password.getText());
-                if (nickname != null){
-                    user = new User(nickname);
-                    System.out.println("Successfully connection register person:  " + nickname);
-                    return true;
-                }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            DBConnection.disconnect();
-        }
-
-        System.out.println("DB Connection false;");
-        return false;
-    }
-
 
     private void getMainWindow(){
         Parent root = null;
@@ -83,5 +63,42 @@ public class LoginController {
 
     public static User getUser() {
         return user;
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        Network.start();
+        Thread t = new Thread(() -> {
+                while (user == null){
+                    try {
+                        AbstractMessage am = Network.readObject();
+                        if (am instanceof AuthenticationCommand){
+                            AuthenticationCommand ac = (AuthenticationCommand) am;
+                            String nickname = ac.getNickname();
+                            if (nickname != null){
+                                user = new User(nickname);
+                                System.out.println("Successfully connection register person:  " + nickname);
+                                updateUI(this::getMainWindow);
+                            } else {
+                                updateUI(this::getLoginExceptionWindow);
+                            }
+                        }
+                    } catch (ClassNotFoundException | IOException e) {
+                        e.printStackTrace();
+                    } finally {
+                        Network.stop();
+                    }
+                }
+        });
+        t.setDaemon(true);
+        t.start();
+    }
+
+    private void updateUI(Runnable r) {
+        if (Platform.isFxApplicationThread()){
+            r.run();
+        } else {
+            Platform.runLater(r);
+        }
     }
 }

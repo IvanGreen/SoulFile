@@ -44,7 +44,7 @@ public class MainWindow implements Initializable {
                     }
                     if (am instanceof SoulFile){
                         SoulFile sf = (SoulFile) am;
-                        for (String o: sf.getArrayFilename()) {
+                        for (String o: sf.getArrayListFilename()) {
                             updateUI(() -> {
                                 soulFiles.getItems().add(o);
                                 System.out.println("Soul Files List Update");
