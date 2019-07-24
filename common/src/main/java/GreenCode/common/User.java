@@ -16,7 +16,7 @@ public class User implements Serializable {
         this.clientPath = "common/src/main/resources/storage/clients/" + getNickname() + "/";
         this.serverPath = "common/src/main/resources/storage/server/" + getNickname() + "/";
         checkFolders();
-        System.out.println("Add new User: " + getNickname() + "\n server folder: " + getServerPath() + "\n private folder: " + getClientPath());
+        Log4j.log.info("Add new User: " + getNickname() + "\n server folder: " + getServerPath() + "\n private folder: " + getClientPath());
     }
 
     public String getNickname() {
@@ -36,7 +36,7 @@ public class User implements Serializable {
             Path path = Paths.get(getClientPath());
             try {
                 Path newDir = Files.createDirectory(path);
-                System.out.println("Created a new client folder for: " + getNickname());
+                Log4j.log.info("Created a new client folder for: " + getNickname());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -46,7 +46,7 @@ public class User implements Serializable {
             Path path = Paths.get(getServerPath());
             try {
                 Path newDir = Files.createDirectory(path);
-                System.out.println("Created a new server folder for: " + getNickname());
+                Log4j.log.info("Created a new server folder for: " + getNickname());
             } catch (IOException e) {
                 e.printStackTrace();
             }

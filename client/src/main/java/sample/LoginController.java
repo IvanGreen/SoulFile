@@ -1,9 +1,6 @@
 package sample;
 
-import GreenCode.common.AbstractMessage;
-import GreenCode.common.AuthenticationCommand;
-import GreenCode.common.AuthenticationRequest;
-import GreenCode.common.User;
+import GreenCode.common.*;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +15,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 
 public class LoginController implements Initializable {
 
@@ -34,11 +32,11 @@ public class LoginController implements Initializable {
 
     public void auth(ActionEvent actionEvent){
         Network.sendMsg(new AuthenticationRequest(login.getText(),password.getText()));
-        System.out.println("AuthenticationRequest send with: " + login.getText() + " / " + password.getText());
+        Log4j.log.info("AuthenticationRequest send for: " + login.getText());
     }
 
     private void getMainWindow(){
-        Parent root = null;
+        Parent root;
         try {
             root = FXMLLoader.load(getClass().getResource("/mainWindow.fxml"));
             Scene scene = new Scene(root);
@@ -49,7 +47,7 @@ public class LoginController implements Initializable {
     }
 
     private void getLoginExceptionWindow() {
-        Parent root = null;
+        Parent root;
         try {
             root = FXMLLoader.load(getClass().getResource("/loginException.fxml"));
             Stage stage = new Stage();
@@ -61,7 +59,7 @@ public class LoginController implements Initializable {
         }
     }
 
-    public static User getUser() {
+    static User getUser() {
         return user;
     }
 
@@ -77,7 +75,7 @@ public class LoginController implements Initializable {
                             String nickname = ac.getNickname();
                             if (nickname != null){
                                 user = new User(nickname);
-                                System.out.println("Successfully connection register person:  " + nickname);
+                                Log4j.log.info("Successfully connection register person:  " + nickname);
                                 updateUI(this::getMainWindow);
                             } else {
                                 updateUI(this::getLoginExceptionWindow);

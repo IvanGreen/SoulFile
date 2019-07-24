@@ -32,7 +32,7 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
             if (msg instanceof SoulFileRequest){
                 ArrayList<String> filenames = new ArrayList<>();
                 SoulFileRequest sfr = (SoulFileRequest) msg;
-                Files.list(Paths.get(sfr.getOwner().getServerPath())).map(p -> p.getFileName().toString()).forEach(o -> filenames.add(o));
+                Files.list(Paths.get(sfr.getOwner().getServerPath())).map(p -> p.getFileName().toString()).forEach(filenames::add);
                 SoulFile sf = new SoulFile(filenames);
                 ctx.writeAndFlush(sf);
             }
@@ -40,7 +40,7 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
                 AuthenticationRequest ar = (AuthenticationRequest) msg;
                 String nickname = DBConnection.getNicknameByLoginAndPassword(ar.getLogin(),ar.getPassword());
                 AuthenticationCommand ac = new AuthenticationCommand(nickname);
-                System.out.println("Send AuthenticationCommand with: " + nickname);
+                Log4j.log.info("Send AuthenticationCommand with: " + nickname);
                 ctx.writeAndFlush(ac);
             }
         } finally {
@@ -49,7 +49,7 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
     }
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         cause.printStackTrace();
         ctx.close();
     }

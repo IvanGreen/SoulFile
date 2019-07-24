@@ -1,26 +1,28 @@
 package GreenCode.server;
 
+import GreenCode.common.Log4j;
+
 import java.sql.*;
 
-public class DBConnection {
+class DBConnection {
 
     private static Connection connection;
     private static Statement statement;
 
-    public static  void connect() throws SQLException{
+    static  void connect() throws SQLException{
         try{
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:users.db");
             statement = connection.createStatement();
-            System.out.println("Start DB connection");
+            Log4j.log.info("Start DB Connection");
         }catch (ClassNotFoundException e){
             e.printStackTrace();
             System.out.println("Connect - error");
         }
     }
 
-    public static String getNicknameByLoginAndPassword(String login, String password){
-        System.out.println("Try login: " + login + " & password: " + password);
+    static String getNicknameByLoginAndPassword(String login, String password){
+        Log4j.log.info("Try login: " + login);
         String sql = String.format("SELECT nickname FROM accounts\n" +
                 "WHERE login = '%s'\n" +
                 "AND password = '%s'",login,password);
@@ -36,7 +38,7 @@ public class DBConnection {
         return null;
     }
 
-    public static void disconnect(){
+    static void disconnect(){
         try {
             connection.close();
             System.out.println("DB connection closed");

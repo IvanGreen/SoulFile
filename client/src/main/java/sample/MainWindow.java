@@ -7,7 +7,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
-
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -19,10 +18,10 @@ import java.util.ResourceBundle;
 public class MainWindow implements Initializable {
 
     @FXML
-    ListView localFiles;
+    ListView<String> localFiles;
 
     @FXML
-    ListView soulFiles;
+    ListView<String> soulFiles;
 
     private User user;
 
@@ -40,14 +39,14 @@ public class MainWindow implements Initializable {
                     }
                     if (am instanceof FileCommand){
                         refreshSoulFilesList();
-                        System.out.println(((FileCommand) am).getMsg());
+                        Log4j.log.info(((FileCommand) am).getMsg());
                     }
                     if (am instanceof SoulFile){
                         SoulFile sf = (SoulFile) am;
                         for (String o: sf.getArrayListFilename()) {
                             updateUI(() -> {
                                 soulFiles.getItems().add(o);
-                                System.out.println("Soul Files List Update");
+                                Log4j.log.info("Soul Files List Update");
                             });
                         }
                     }
@@ -69,7 +68,7 @@ public class MainWindow implements Initializable {
             try {
                 localFiles.getItems().clear();
                 Files.list(Paths.get(user.getClientPath())).map(p -> p.getFileName().toString()).forEach(o -> localFiles.getItems().add(o));
-                System.out.println("Local Files List Update");
+                Log4j.log.info("Local Files List Update User: " + user.getNickname());
             } catch (IOException e){
                 e.printStackTrace();
             }
@@ -80,6 +79,7 @@ public class MainWindow implements Initializable {
         updateUI(() -> {
             soulFiles.getItems().clear();
             Network.sendMsg(new SoulFileRequest(user));
+            Log4j.log.info("Send SoulFileRequest: " + user.getNickname());
         });
     }
 
@@ -94,25 +94,25 @@ public class MainWindow implements Initializable {
     public void pressOnSoulDownloadBtn(ActionEvent actionEvent){
         if (takeSoulFile().length() > 0){
             Network.sendMsg(new FileRequest(takeSoulFile(),user));
-            System.out.println("Send FileRequest: " + takeSoulFile());
+            Log4j.log.info("Send FileRequest: " + takeSoulFile());
         }
     }
 
     public void pressOnLocalUpdateBtn(ActionEvent actionEvent) throws IOException {
         if (takeLocalFile().length() > 0){
             Network.sendMsg(new FileMessage(Paths.get(user.getClientPath() + takeLocalFile()),user));
-            System.out.println("Send FileMessage: " + Paths.get(user.getClientPath() + takeLocalFile()));
+            Log4j.log.info("Send FileMessage: " + Paths.get(user.getClientPath() + takeLocalFile()));
         }
     }
 
     private String takeLocalFile(){
-        ObservableList lf = localFiles.getSelectionModel().getSelectedItems();
-        return lf.get(0).toString();
+        ObservableList<String> lf = localFiles.getSelectionModel().getSelectedItems();
+        return lf.get(0);
     }
 
     private String takeSoulFile() {
-        ObservableList sf = soulFiles.getSelectionModel().getSelectedItems();
-        return sf.get(0).toString();
+        ObservableList<String> sf = soulFiles.getSelectionModel().getSelectedItems();
+        return sf.get(0);
     }
 
     public void pressOnLocalDeleteBtn(ActionEvent actionEvent) throws IOException {
@@ -120,7 +120,7 @@ public class MainWindow implements Initializable {
             Path path = Paths.get(user.getClientPath() + takeLocalFile());
             Files.delete(path);
             refreshLocalFilesList();
-            System.out.println("Delete Local File: " + path);
+            Log4j.log.info("Delete Local File: " + path);
         }
     }
 
@@ -129,7 +129,7 @@ public class MainWindow implements Initializable {
             Path path = Paths.get(user.getServerPath() + takeSoulFile());
             Files.delete(path);
             refreshSoulFilesList();
-            System.out.println("Delete Soul File: " + path);
+            Log4j.log.info("Delete Soul File: " + path);
         }
     }
 }

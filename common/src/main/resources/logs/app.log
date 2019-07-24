@@ -1,0 +1,41 @@
+2019-37-24 15:37:56.640 [main] INFO  log.GreenCode.common.Log4j - Start DB Connection
+2019-53-24 15:53:10.286 [main] INFO  GreenCode.common.Log4j - Start DB Connection
+2019-53-24 15:53:31.727 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Start Network
+2019-53-24 15:53:42.446 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - AuthenticationRequest send with: login1 / pass1
+2019-53-24 15:53:42.470 [nioEventLoopGroup-3-1] INFO  GreenCode.common.Log4j - Send AuthenticationCommand with: EVE
+2019-53-24 15:53:42.481 [Thread-5] INFO  GreenCode.common.Log4j - Add new User: EVE
+ server folder: common/src/main/resources/storage/server/EVE/
+ private folder: common/src/main/resources/storage/clients/EVE/
+2019-53-24 15:53:42.481 [Thread-5] INFO  GreenCode.common.Log4j - Successfully connection register person:  EVE
+2019-53-24 15:53:42.482 [Thread-5] INFO  GreenCode.common.Log4j - Stop Network
+2019-53-24 15:53:42.513 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Start Network
+2019-53-24 15:53:42.519 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Local Files List Update User: EVE
+2019-53-24 15:53:42.522 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send SoulFileRequest: EVE
+2019-53-24 15:53:42.695 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Soul Files List Update
+2019-56-24 15:56:25.615 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send FileMessage: common\src\main\resources\storage\clients\EVE\EVE1.txt
+2019-56-24 15:56:25.626 [Thread-6] INFO  GreenCode.common.Log4j - The server has a new file: EVE1.txt
+2019-56-24 15:56:25.627 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send SoulFileRequest: EVE
+2019-56-24 15:56:25.629 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Soul Files List Update
+2019-56-24 15:56:25.629 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Soul Files List Update
+2019-57-24 15:57:55.526 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send SoulFileRequest: EVE
+2019-57-24 15:57:55.526 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Delete Soul File: common\src\main\resources\storage\server\EVE\EVE1.txt
+2019-57-24 15:57:55.531 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Soul Files List Update
+2019-58-24 15:58:01.958 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send FileRequest: EVE2.txt
+2019-58-24 15:58:01.968 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Local Files List Update User: EVE
+2019-58-24 15:58:05.973 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Local Files List Update User: EVE
+2019-58-24 15:58:05.973 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Delete Local File: common\src\main\resources\storage\clients\EVE\EVE2.txt
+2019-02-24 16:02:24.113 [main] INFO  GreenCode.common.Log4j - Start DB Connection
+2019-02-24 16:02:30.300 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Start Network
+2019-02-24 16:02:35.902 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - AuthenticationRequest send for: login3
+2019-02-24 16:02:35.928 [nioEventLoopGroup-3-1] INFO  GreenCode.common.Log4j - Try login: login3
+2019-02-24 16:02:35.929 [nioEventLoopGroup-3-1] INFO  GreenCode.common.Log4j - Send AuthenticationCommand with: Relo.a.D
+2019-02-24 16:02:35.941 [Thread-5] INFO  GreenCode.common.Log4j - Created a new client folder for: Relo.a.D
+2019-02-24 16:02:35.942 [Thread-5] INFO  GreenCode.common.Log4j - Created a new server folder for: Relo.a.D
+2019-02-24 16:02:35.942 [Thread-5] INFO  GreenCode.common.Log4j - Add new User: Relo.a.D
+ server folder: common/src/main/resources/storage/server/Relo.a.D/
+ private folder: common/src/main/resources/storage/clients/Relo.a.D/
+2019-02-24 16:02:35.942 [Thread-5] INFO  GreenCode.common.Log4j - Successfully connection register person:  Relo.a.D
+2019-02-24 16:02:35.943 [Thread-5] INFO  GreenCode.common.Log4j - Stop Network
+2019-02-24 16:02:35.974 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Start Network
+2019-02-24 16:02:35.982 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Local Files List Update User: Relo.a.D
+2019-02-24 16:02:35.984 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send SoulFileRequest: Relo.a.D
