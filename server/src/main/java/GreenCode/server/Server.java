@@ -18,12 +18,12 @@ public class Server {
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
             ServerBootstrap b = new ServerBootstrap();
-            b.group(mainGroup,workerGroup)
+            b.group(mainGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
-                    .childHandler(new ChannelInitializer<SocketChannel>(){
-                        protected void initChannel(SocketChannel socketChannel) throws Exception{
+                    .childHandler(new ChannelInitializer<SocketChannel>() {
+                        protected void initChannel(SocketChannel socketChannel) throws Exception {
                             socketChannel.pipeline().addLast(
-                                    new ObjectDecoder(50*1024*1024, ClassResolvers.cacheDisabled(null)),
+                                    new ObjectDecoder(50 * 1024 * 1024, ClassResolvers.cacheDisabled(null)),
                                     new ObjectEncoder(),
                                     new MainHandler()
                             );
@@ -35,7 +35,7 @@ public class Server {
             } finally {
                 mainGroup.shutdownGracefully();
                 workerGroup.shutdownGracefully();
-        }
+            }
     }
 
     public static void main(String[] args) throws Exception {

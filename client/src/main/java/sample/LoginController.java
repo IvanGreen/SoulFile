@@ -1,7 +1,8 @@
 package sample;
 
-import GreenCode.server.DBconnection;
+import GreenCode.server.DBConnection;
 import GreenCode.common.User;
+import GreenCode.server.Server;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,20 +37,22 @@ public class LoginController {
     }
 
     private boolean tryAuth() {
+
         try {
-            DBconnection.connect();
-            String nickname = DBconnection.getNicknameByLoginAndPassword(login.getText(),password.getText());
-            if (nickname != null){
-                user = new User(nickname);
-                System.out.println("Successfully connection register person:  " + nickname);
-                return true;
-            }
-        } catch (SQLException e){
+            DBConnection.connect();
+            String nickname = DBConnection.getNicknameByLoginAndPassword(login.getText(),password.getText());
+                if (nickname != null){
+                    user = new User(nickname);
+                    System.out.println("Successfully connection register person:  " + nickname);
+                    return true;
+                }
+        } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            DBconnection.disconnect();
+            DBConnection.disconnect();
         }
-        System.out.println("Authentication - false");
+
+        System.out.println("DB Connection false;");
         return false;
     }
 

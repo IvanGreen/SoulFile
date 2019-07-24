@@ -6,10 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,11 +18,6 @@ import java.util.ResourceBundle;
 
 public class MainWindow implements Initializable {
 
-    @FXML
-    TextField textFieldMessage;
-
-    @FXML
-    Button sendBtn;
     @FXML
     ListView localFiles;
 
@@ -49,6 +41,15 @@ public class MainWindow implements Initializable {
                     if (am instanceof FileCommand){
                         refreshSoulFilesList();
                         System.out.println(((FileCommand) am).getMsg());
+                    }
+                    if (am instanceof SoulFile){
+                        SoulFile sf = (SoulFile) am;
+                        for (String o: sf.getArrayFilename()) {
+                            updateUI(() -> {
+                                soulFiles.getItems().add(o);
+                                System.out.println("Soul Files List Update");
+                            });
+                        }
                     }
                 }
             } catch (ClassNotFoundException | IOException e){
@@ -77,13 +78,8 @@ public class MainWindow implements Initializable {
 
     public void refreshSoulFilesList() {
         updateUI(() -> {
-            try {
-                soulFiles.getItems().clear();
-                Files.list(Paths.get(user.getServerPath())).map(p -> p.getFileName().toString()).forEach(o -> soulFiles.getItems().add(o));
-                System.out.println("Soul Files List Update");
-            } catch (IOException e){
-                e.printStackTrace();
-            }
+            soulFiles.getItems().clear();
+            Network.sendMsg(new SoulFileRequest(user));
         });
     }
 

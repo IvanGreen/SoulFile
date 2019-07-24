@@ -29,6 +29,13 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
                 FileCommand fc = new FileCommand("The server has a new file: " + fm.getFilename(),fm.getOwner());
                 ctx.writeAndFlush(fc);
             }
+            if (msg instanceof SoulFileRequest){
+                ArrayList<String> filenames = new ArrayList<>();
+                SoulFileRequest sfr = (SoulFileRequest) msg;
+                Files.list(Paths.get(sfr.getOwner().getServerPath())).map(p -> p.getFileName().toString()).forEach(o -> filenames.add(o));
+                SoulFile sf = new SoulFile(filenames);
+                ctx.writeAndFlush(sf);
+            }
         } finally {
             ReferenceCountUtil.release(msg);
         }
