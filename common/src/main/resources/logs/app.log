@@ -247,3 +247,75 @@
 2019-23-30 10:23:57.798 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send SoulFileRequest: EVE
 2019-23-30 10:23:57.798 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Delete Soul File: common\src\main\resources\storage\server\EVE\EVE1.txt
 2019-23-30 10:23:57.799 [Thread-6] INFO  GreenCode.common.Log4j - Soul Files List Update
+2019-26-30 10:26:20.002 [main] INFO  GreenCode.common.Log4j - Start DB Connection
+2019-26-30 10:26:24.772 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Start Network
+2019-26-30 10:26:29.975 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - AuthenticationRequest send for: login1
+2019-26-30 10:26:29.998 [nioEventLoopGroup-3-1] INFO  GreenCode.common.Log4j - Try login: login1
+2019-26-30 10:26:30.000 [nioEventLoopGroup-3-1] INFO  GreenCode.common.Log4j - Send AuthenticationCommand with: EVE
+2019-26-30 10:26:30.011 [Thread-5] INFO  GreenCode.common.Log4j - Add new User: EVE
+ server folder: common/src/main/resources/storage/server/EVE/
+ private folder: common/src/main/resources/storage/clients/EVE/
+2019-26-30 10:26:30.011 [Thread-5] INFO  GreenCode.common.Log4j - Successfully connection register person:  EVE
+2019-26-30 10:26:30.012 [Thread-5] INFO  GreenCode.common.Log4j - Stop Network
+2019-26-30 10:26:30.038 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Start Network
+2019-26-30 10:26:30.043 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Local Files List Update User: EVE
+2019-26-30 10:26:30.045 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send SoulFileRequest: EVE
+2019-26-30 10:26:30.059 [Thread-6] INFO  GreenCode.common.Log4j - Soul Files List Update
+2019-26-30 10:26:32.449 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send FileMessage: common\src\main\resources\storage\clients\EVE\EVE1.txt
+2019-26-30 10:26:32.456 [nioEventLoopGroup-3-2] INFO  GreenCode.common.Log4j - The server has a new file: EVE1.txt
+2019-26-30 10:26:32.459 [Thread-6] INFO  GreenCode.common.Log4j - Soul Files List Update
+2019-26-30 10:26:34.454 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send SoulFileRequest: EVE
+2019-26-30 10:26:34.454 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Delete Soul File: common\src\main\resources\storage\server\EVE\EVE1.txt
+2019-26-30 10:26:34.455 [Thread-6] INFO  GreenCode.common.Log4j - Soul Files List Update
+2019-26-30 10:26:36.062 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send FileRequest: EVE2.txt
+2019-26-30 10:26:36.070 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Local Files List Update User: EVE
+2019-26-30 10:26:37.837 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Delete Local File: common\src\main\resources\storage\clients\EVE\EVE2.txt
+2019-26-30 10:26:37.838 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Local Files List Update User: EVE
+2019-44-30 10:44:08.669 [main] INFO  GreenCode.common.Log4j - Start DB Connection
+2019-44-30 10:44:14.427 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Start Network
+2019-44-30 10:44:19.262 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - AuthenticationRequest send for: login1
+2019-44-30 10:44:19.286 [nioEventLoopGroup-3-1] INFO  GreenCode.common.Log4j - Try login: login1
+2019-44-30 10:44:19.288 [nioEventLoopGroup-3-1] INFO  GreenCode.common.Log4j - Send AuthenticationCommand with: EVE
+2019-44-30 10:44:19.298 [Thread-5] INFO  GreenCode.common.Log4j - Add new User: EVE
+ server folder: common/src/main/resources/storage/server/EVE/
+ private folder: common/src/main/resources/storage/clients/EVE/
+2019-44-30 10:44:19.298 [Thread-5] INFO  GreenCode.common.Log4j - Successfully connection register person:  EVE
+2019-44-30 10:44:19.299 [Thread-5] INFO  GreenCode.common.Log4j - Stop Network
+2019-44-30 10:44:19.325 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Start Network
+2019-44-30 10:44:19.331 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Local Files List Update User: EVE
+2019-44-30 10:44:19.332 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send SoulFileRequest: EVE
+2019-44-30 10:44:19.349 [Thread-6] INFO  GreenCode.common.Log4j - Soul Files List Update
+2019-44-30 10:44:21.778 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send FileMessage: common\src\main\resources\storage\clients\EVE\EVE1.txt
+2019-44-30 10:44:21.787 [nioEventLoopGroup-3-2] INFO  GreenCode.common.Log4j - The server has a new file: EVE1.txt
+2019-44-30 10:44:21.789 [Thread-6] INFO  GreenCode.common.Log4j - Soul Files List Update
+2019-44-30 10:44:24.654 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send SoulFileRequest: EVE
+2019-44-30 10:44:24.655 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Delete Soul File: common\src\main\resources\storage\server\EVE\EVE1.txt
+2019-44-30 10:44:24.656 [Thread-6] INFO  GreenCode.common.Log4j - Soul Files List Update
+2019-44-30 10:44:29.423 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send FileRequest: EVE2.txt
+2019-44-30 10:44:29.430 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Local Files List Update User: EVE
+2019-44-30 10:44:32.543 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Delete Local File: common\src\main\resources\storage\clients\EVE\EVE2.txt
+2019-44-30 10:44:32.543 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Local Files List Update User: EVE
+2019-44-30 10:44:45.115 [main] INFO  GreenCode.common.Log4j - Start DB Connection
+2019-44-30 10:44:47.696 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Start Network
+2019-44-30 10:44:54.369 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - AuthenticationRequest send for: login1
+2019-44-30 10:44:54.391 [nioEventLoopGroup-3-1] INFO  GreenCode.common.Log4j - Try login: login1
+2019-44-30 10:44:54.392 [nioEventLoopGroup-3-1] INFO  GreenCode.common.Log4j - Send AuthenticationCommand with: EVE
+2019-44-30 10:44:54.403 [Thread-5] INFO  GreenCode.common.Log4j - Add new User: EVE
+ server folder: common/src/main/resources/storage/server/EVE/
+ private folder: common/src/main/resources/storage/clients/EVE/
+2019-44-30 10:44:54.404 [Thread-5] INFO  GreenCode.common.Log4j - Successfully connection register person:  EVE
+2019-44-30 10:44:54.405 [Thread-5] INFO  GreenCode.common.Log4j - Stop Network
+2019-44-30 10:44:54.430 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Start Network
+2019-44-30 10:44:54.436 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Local Files List Update User: EVE
+2019-44-30 10:44:54.437 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send SoulFileRequest: EVE
+2019-44-30 10:44:54.451 [Thread-6] INFO  GreenCode.common.Log4j - Soul Files List Update
+2019-44-30 10:44:57.297 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send FileMessage: common\src\main\resources\storage\clients\EVE\EVE1.txt
+2019-44-30 10:44:57.303 [nioEventLoopGroup-3-2] INFO  GreenCode.common.Log4j - The server has a new file: EVE1.txt
+2019-44-30 10:44:57.305 [Thread-6] INFO  GreenCode.common.Log4j - Soul Files List Update
+2019-44-30 10:44:59.679 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send SoulFileRequest: EVE
+2019-44-30 10:44:59.679 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Delete Soul File: common\src\main\resources\storage\server\EVE\EVE1.txt
+2019-44-30 10:44:59.680 [Thread-6] INFO  GreenCode.common.Log4j - Soul Files List Update
+2019-45-30 10:45:02.607 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Send FileRequest: EVE2.txt
+2019-45-30 10:45:02.614 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Local Files List Update User: EVE
+2019-45-30 10:45:06.911 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Delete Local File: common\src\main\resources\storage\clients\EVE\EVE2.txt
+2019-45-30 10:45:06.912 [JavaFX Application Thread] INFO  GreenCode.common.Log4j - Local Files List Update User: EVE

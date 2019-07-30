@@ -24,20 +24,14 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
                 }
             }
             if (msg instanceof FileMessage){
-                ArrayList<String> filenames = new ArrayList<>();
                 FileMessage fm = (FileMessage) msg;
                 Files.write(Paths.get(fm.getOwner().getServerPath() + fm.getFilename()),fm.getData(), StandardOpenOption.CREATE);
                 Log4j.log.info("The server has a new file: " + fm.getFilename(),fm.getOwner());
-                Files.list(Paths.get(fm.getOwner().getServerPath())).map(p -> p.getFileName().toString()).forEach(filenames::add);
-                SoulFile sf = new SoulFile(filenames);
-                ctx.writeAndFlush(sf);
+                sendSoulFileMessage(fm, ctx);
             }
             if (msg instanceof SoulFileRequest){
-                ArrayList<String> filenames = new ArrayList<>();
                 SoulFileRequest sfr = (SoulFileRequest) msg;
-                Files.list(Paths.get(sfr.getOwner().getServerPath())).map(p -> p.getFileName().toString()).forEach(filenames::add);
-                SoulFile sf = new SoulFile(filenames);
-                ctx.writeAndFlush(sf);
+                sendSoulFileMessage(sfr,ctx);
             }
             if (msg instanceof AuthenticationRequest){
                 AuthenticationRequest ar = (AuthenticationRequest) msg;
@@ -49,6 +43,13 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
         } finally {
             ReferenceCountUtil.release(msg);
         }
+    }
+
+    private void sendSoulFileMessage(AbstractMessage abstractMessage, ChannelHandlerContext ctx) throws Exception {
+        ArrayList<String> filenames = new ArrayList<>();
+        Files.list(Paths.get(abstractMessage.getOwner().getServerPath())).map(p -> p.getFileName().toString()).forEach(filenames::add);
+        SoulFile sf = new SoulFile(filenames);
+        ctx.writeAndFlush(sf);
     }
 
     @Override
