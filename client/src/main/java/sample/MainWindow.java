@@ -37,18 +37,15 @@ public class MainWindow implements Initializable {
                         Files.write(Paths.get(user.getClientPath() + fm.getFilename()),fm.getData(), StandardOpenOption.CREATE);
                         refreshLocalFilesList();
                     }
-                    if (am instanceof FileCommand){
-                        refreshSoulFilesList();
-                        Log4j.log.info(((FileCommand) am).getMsg());
-                    }
                     if (am instanceof SoulFile){
                         SoulFile sf = (SoulFile) am;
-                        for (String o: sf.getArrayListFilename()) {
                             updateUI(() -> {
-                                soulFiles.getItems().add(o);
-                                Log4j.log.info("Soul Files List Update");
+                                soulFiles.getItems().clear();
+                                for (String o: sf.getArrayListFilename()) {
+                                        soulFiles.getItems().add(o);
+                                }
                             });
-                        }
+                        Log4j.log.info("Soul Files List Update");
                     }
                 }
             } catch (ClassNotFoundException | IOException e){
@@ -77,7 +74,6 @@ public class MainWindow implements Initializable {
 
     public void refreshSoulFilesList() {
         updateUI(() -> {
-            soulFiles.getItems().clear();
             Network.sendMsg(new SoulFileRequest(user));
             Log4j.log.info("Send SoulFileRequest: " + user.getNickname());
         });
@@ -119,8 +115,8 @@ public class MainWindow implements Initializable {
         if (takeLocalFile().length() > 0){
             Path path = Paths.get(user.getClientPath() + takeLocalFile());
             Files.delete(path);
-            refreshLocalFilesList();
             Log4j.log.info("Delete Local File: " + path);
+            refreshLocalFilesList();
         }
     }
 
