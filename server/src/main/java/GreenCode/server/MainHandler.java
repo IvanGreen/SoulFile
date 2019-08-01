@@ -11,8 +11,6 @@ import java.util.ArrayList;
 
 public class MainHandler extends ChannelInboundHandlerAdapter {
 
-    private static ArrayList<String> list = new ArrayList<>();
-
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         try{
